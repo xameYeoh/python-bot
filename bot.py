@@ -9,7 +9,7 @@ import random
 # token = os.getenv('DISCORD_TOKEN')
 
 client = commands.Bot(command_prefix = '!')
-
+await client.process_commands(message)
 
 
 @client.event
