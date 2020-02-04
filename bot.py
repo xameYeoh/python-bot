@@ -25,14 +25,14 @@ async def on_ready():
     print('------')
 
 @client.event
-async def on_message(message, discord.channel):
+async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
 
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
-        await channel.send(msg)
+        await message.channel.send(msg)
 
 
 
@@ -45,11 +45,11 @@ async def on_member_remove(member):
 	print(f'{member} has left a server')
 
 @client.command()
-async def ping(ctx, discord.channel):
-	await channel.send(f'Pong! {round(client.latency * 1000)}')
+async def ping(ctx):
+	await message.channel.send(f'Pong! {round(client.latency * 1000)}')
 
 @client.command(aliases=['8ball'])
-async def _8ball(ctx, discord.channel):
+async def _8ball(ctx):
 	responses = ['Бесспорно',
 	'Предрешено',
 	'Никаких сомнений',
@@ -70,6 +70,6 @@ async def _8ball(ctx, discord.channel):
 	'Перспективы не очень хорошие',
 	'Весьма сомнительно'
 	]
-	await channel.send(f'Ответ: {random.choice(responses)}, {context.message.author.mention}')
+	await message.channel.send(f'Ответ: {random.choice(responses)}, {context.message.author.mention}')
 
 client.run('Njc0MjcwNzY1NDQ4OTUzODY2.XjmJng.RcYsYGOtLEyXDwpdbbyJR44ege8')
