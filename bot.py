@@ -9,7 +9,7 @@ import random
 # token = os.getenv('DISCORD_TOKEN')
 
 client = commands.Bot(command_prefix = '!')
-await client.process_commands(message)
+
 
 
 @client.event
@@ -35,6 +35,8 @@ async def on_message(message):
         msg = 'Hello {0.author.mention}'.format(message)
         await message.channel.send(msg)
 
+	await client.process_commands(message)
+
 
 
 @client.event
@@ -47,7 +49,7 @@ async def on_member_remove(member):
 
 @client.command()
 async def ping(ctx):
-	await message.channel.send(f'Pong! {round(client.latency * 1000)}')
+	await ctx.send(f'Pong! {round(client.latency * 1000)}')
 
 @client.command(aliases=['8ball'])
 async def _8ball(ctx):
@@ -71,6 +73,6 @@ async def _8ball(ctx):
 	'Перспективы не очень хорошие',
 	'Весьма сомнительно'
 	]
-	await message.channel.send(f'Ответ: {random.choice(responses)}, {context.message.author.mention}')
+	await ctx.send(f'Ответ: {random.choice(responses)}, {context.message.author.mention}')
 
 client.run('Njc0MjcwNzY1NDQ4OTUzODY2.XjmJng.RcYsYGOtLEyXDwpdbbyJR44ege8')
