@@ -72,6 +72,6 @@ async def _8ball(ctx):
 	'Перспективы не очень хорошие',
 	'Весьма сомнительно'
 	]
-	await ctx.send(f'Ответ: {random.choice(responses)}, {context.message.author.mention}')
+	await ctx.send(f'Ответ: {random.choice(responses)}, {ctx.message.author.mention}')
 
 client.run('Njc0MjcwNzY1NDQ4OTUzODY2.XjmJng.RcYsYGOtLEyXDwpdbbyJR44ege8')
