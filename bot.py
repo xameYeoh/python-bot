@@ -11,6 +11,7 @@ import random
 client = commands.Bot(command_prefix = '!')
 
 
+
 @client.event
 async def on_ready():
     print('Logged in as')
@@ -26,13 +27,14 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+	await client.process_commands(message)
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
 
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
+        await message.channel.send(msg)
 
 
 
@@ -46,7 +48,7 @@ async def on_member_remove(member):
 
 @client.command()
 async def ping(ctx):
-	await ctx.send(f'Pong! {round(client.latency * 1000)}')
+	await message.channel.send(f'Pong! {round(client.latency * 1000)}')
 
 @client.command(aliases=['8ball'])
 async def _8ball(ctx):
@@ -70,6 +72,6 @@ async def _8ball(ctx):
 	'Перспективы не очень хорошие',
 	'Весьма сомнительно'
 	]
-	await ctx.send(f'Ответ: {random.choice(responses)}, {context.message.author.mention}')
+	await message.channel.send(f'Ответ: {random.choice(responses)}, {context.message.author.mention}')
 
 client.run('Njc0MjcwNzY1NDQ4OTUzODY2.XjmJng.RcYsYGOtLEyXDwpdbbyJR44ege8')
