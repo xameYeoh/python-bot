@@ -32,7 +32,7 @@ async def on_message(message):
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
         await message.channel.send(msg)
-        await client.process_commands(message)
+    await client.process_commands(message)
 
 
 @client.event
@@ -78,6 +78,5 @@ async def _8ball(ctx):
                  'Весьма сомнительно'
                  ]
     await ctx.send(f'Ответ: {random.choice(responses)}, {ctx.message.author.mention}')
-
 
 client.run('Njc0MjcwNzY1NDQ4OTUzODY2.XjmJng.RcYsYGOtLEyXDwpdbbyJR44ege8')
