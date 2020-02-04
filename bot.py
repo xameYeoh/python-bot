@@ -32,7 +32,7 @@ async def on_message(message):
 
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
-        await await channel.send(msg)
+        await channel.send(msg)
 
 
 
