@@ -51,9 +51,9 @@ async def ping(ctx):
 
 
 @client.command()
-async def whoisgay(ctx, text):
+async def whoisgay(ctx, *, text):
     players = text.split(" ")
-    await ctx.send(f'{random.choice(players)}- Гей, :gachigasm:')
+    await ctx.send(f'{random.choice(players)}- Гей, <:gachigasm:607887638040674314>')
 
 
 @client.command(aliases=['8ball'])
